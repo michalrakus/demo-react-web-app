@@ -5,6 +5,15 @@ import {XMenu} from "./XMenu";
 import {XUtilsMetadata} from "@michalrakus/x-react-web-lib/XUtilsMetadata";
 import {XLoginForm} from "@michalrakus/x-react-web-lib/XLoginForm";
 import useXToken from "@michalrakus/x-react-web-lib/lib/components/useXToken";
+import {XUtils} from "@michalrakus/x-react-web-lib/XUtils";
+
+// provizorne takto, musi byt nastavene pred prvym requestom na server
+let xServerUrl = process.env.X_SERVER_URL; // pouzivane na heroku
+if (xServerUrl == null || xServerUrl == '') {
+    xServerUrl = 'http://localhost:8081/';
+    //xServerUrl = 'https://x-demo-server.herokuapp.com/';
+}
+XUtils.setXServerUrl(xServerUrl);
 
 // TODO - v buducnosti presunut do XReactWebLib
 function App() {

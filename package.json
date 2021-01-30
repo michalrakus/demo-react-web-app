@@ -6,7 +6,7 @@
     "node": "14.x"
   },
   "dependencies": {
-    "@michalrakus/x-pokus-lib": "^1.8.0",
+    "@michalrakus/x-react-web-lib": "^0.1.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
