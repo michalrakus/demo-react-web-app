@@ -17,6 +17,8 @@ import {
 import {CountrySearchTable} from "./CountrySearchTable";
 import {XInputDecimal} from "@michalrakus/x-react-web-lib/XInputDecimal";
 import {XInputDate} from "@michalrakus/x-react-web-lib/XInputDate";
+import {SourceCodeLinkForm} from "./SourceCodeLinkForm";
+import {SourceCodeLinkEntity} from "./SourceCodeLinkEntity";
 
 export class CarForm extends XFormBase<Car> {
 
@@ -63,6 +65,8 @@ export class CarForm extends XFormBase<Car> {
                     <Button label="Save" onClick={this.onClickSave} />
                     <Button label="Cancel" onClick={this.onClickCancel} />
                 </div>
+                <SourceCodeLinkForm formFile="CarForm.tsx"/>
+                <SourceCodeLinkEntity formFile="car.entity.ts"/>
             </div>
         );
     }

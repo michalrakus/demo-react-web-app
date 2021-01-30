@@ -3,6 +3,8 @@ import {XInputText} from "@michalrakus/x-react-web-lib/XInputText";
 import {Button} from "primereact/button";
 import React from "react";
 import {Brand} from "./Brand";
+import {SourceCodeLinkForm} from "./SourceCodeLinkForm";
+import {SourceCodeLinkEntity} from "./SourceCodeLinkEntity";
 
 export class BrandForm extends XFormBase<Brand> {
 
@@ -15,6 +17,8 @@ export class BrandForm extends XFormBase<Brand> {
                     <Button label="Save" onClick={this.onClickSave} />
                     <Button label="Cancel" onClick={this.onClickCancel} />
                 </div>
+                <SourceCodeLinkForm formFile="BrandForm.tsx"/>
+                <SourceCodeLinkEntity formFile="brand.entity.ts"/>
             </div>
         );
     }

@@ -2,6 +2,8 @@ import {XLazyColumn, XLazyDataTable} from "@michalrakus/x-react-web-lib/XLazyDat
 import React from "react";
 import {Brand} from "./Brand";
 import {BrandForm} from "./BrandForm";
+import {SourceCodeLinkForm} from "./SourceCodeLinkForm";
+import {SourceCodeLinkEntity} from "./SourceCodeLinkEntity";
 
 export const BrandBrowse = (props: {}) => {
 
@@ -14,9 +16,13 @@ export const BrandBrowse = (props: {}) => {
     }
 
     return (
-        <XLazyDataTable entity="Brand" rows={5} onEdit={onEdit} displayed={(props as any).displayed}>
-            <XLazyColumn field="idBrand" header="ID"/>
-            <XLazyColumn field="brand" header="Brand"/>
-        </XLazyDataTable>
+        <div>
+            <XLazyDataTable entity="Brand" rows={5} onEdit={onEdit} displayed={(props as any).displayed}>
+                <XLazyColumn field="idBrand" header="ID"/>
+                <XLazyColumn field="brand" header="Brand"/>
+            </XLazyDataTable>
+            <SourceCodeLinkForm formFile="BrandBrowse.tsx"/>
+            <SourceCodeLinkEntity formFile="brand.entity.ts"/>
+        </div>
     );
 }
