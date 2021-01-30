@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import {Menubar} from "primereact/menubar";
-import {CarBrowse} from "./CarBrowse";
+import {CarBrowse} from "./forms/CarBrowse";
 import {XFormNavigator3} from "@michalrakus/x-react-web-lib/XFormNavigator3";
-import {BrandBrowse} from "./BrandBrowse";
-import {TestovaciForm} from "./TestovaciForm";
+import {BrandBrowse} from "./forms/BrandBrowse";
+import {TestovaciForm} from "./forms/TestovaciForm";
 import {XToken} from "@michalrakus/x-react-web-lib/XToken";
 import {XUtils} from "@michalrakus/x-react-web-lib/XUtils";
 import {XUserBrowse} from "@michalrakus/x-react-web-lib/XUserBrowse";

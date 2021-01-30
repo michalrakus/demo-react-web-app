@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
-import {CarBrowse} from "./demo/CarBrowse";
-import {XMenu} from "./demo/XMenu";
+import {CarBrowse} from "./forms/CarBrowse";
+import {XMenu} from "./XMenu";
 import {XUtilsMetadata} from "@michalrakus/x-react-web-lib/XUtilsMetadata";
 import {XLoginForm} from "@michalrakus/x-react-web-lib/XLoginForm";
 import useXToken from "@michalrakus/x-react-web-lib/lib/components/useXToken";
