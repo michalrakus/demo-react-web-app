@@ -9,9 +9,11 @@ import {XUtils} from "@michalrakus/x-react-web-lib/XUtils";
 
 // provizorne takto, musi byt nastavene pred prvym requestom na server
 let xServerUrl = process.env.X_SERVER_URL; // pouzivane na heroku
+console.log("********** X_SERVER_URL *************");
+console.log(xServerUrl);
 if (xServerUrl == null || xServerUrl == '') {
-    xServerUrl = 'http://localhost:8081/';
-    //xServerUrl = 'https://x-demo-server.herokuapp.com/';
+    //xServerUrl = 'http://localhost:8081/';
+    xServerUrl = 'https://x-demo-server.herokuapp.com/';
 }
 XUtils.setXServerUrl(xServerUrl);
 
