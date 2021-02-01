@@ -28,8 +28,8 @@ export const CarBrowse = (props: {}) => {
                 <XLazyColumn field="carDate" header="Car Date"/>
                 <XLazyColumn field="carDatetime" header="Car Datetime"/>
             </XLazyDataTable>
-            <SourceCodeLinkForm formFile="CarBrowse.tsx"/>
-            <SourceCodeLinkEntity formFile="car.entity.ts"/>
+            <SourceCodeLinkForm sourceCodeFile="CarBrowse.tsx"/>
+            <SourceCodeLinkEntity sourceCodeFile="car.entity.ts"/>
         </div>
     );
 }

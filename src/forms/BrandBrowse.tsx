@@ -21,8 +21,8 @@ export const BrandBrowse = (props: {}) => {
                 <XLazyColumn field="idBrand" header="ID"/>
                 <XLazyColumn field="brand" header="Brand"/>
             </XLazyDataTable>
-            <SourceCodeLinkForm formFile="BrandBrowse.tsx"/>
-            <SourceCodeLinkEntity formFile="brand.entity.ts"/>
+            <SourceCodeLinkForm sourceCodeFile="BrandBrowse.tsx"/>
+            <SourceCodeLinkEntity sourceCodeFile="brand.entity.ts"/>
         </div>
     );
 }

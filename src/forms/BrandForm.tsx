@@ -17,8 +17,8 @@ export class BrandForm extends XFormBase<Brand> {
                     <Button label="Save" onClick={this.onClickSave} />
                     <Button label="Cancel" onClick={this.onClickCancel} />
                 </div>
-                <SourceCodeLinkForm formFile="BrandForm.tsx"/>
-                <SourceCodeLinkEntity formFile="brand.entity.ts"/>
+                <SourceCodeLinkForm sourceCodeFile="BrandForm.tsx"/>
+                <SourceCodeLinkEntity sourceCodeFile="brand.entity.ts"/>
             </div>
         );
     }

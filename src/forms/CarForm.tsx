@@ -65,8 +65,8 @@ export class CarForm extends XFormBase<Car> {
                     <Button label="Save" onClick={this.onClickSave} />
                     <Button label="Cancel" onClick={this.onClickCancel} />
                 </div>
-                <SourceCodeLinkForm formFile="CarForm.tsx"/>
-                <SourceCodeLinkEntity formFile="car.entity.ts"/>
+                <SourceCodeLinkForm sourceCodeFile="CarForm.tsx"/>
+                <SourceCodeLinkEntity sourceCodeFile="car.entity.ts"/>
             </div>
         );
     }

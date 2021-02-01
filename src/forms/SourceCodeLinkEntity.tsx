@@ -1,9 +1,9 @@
 import React from "react";
 
-export const SourceCodeLinkEntity = (props: {formFile: string}) => {
+export const SourceCodeLinkEntity = (props: {sourceCodeFile: string}) => {
     return (
         <div>
-            <a href={`https://github.com/michalrakus/demo-nest-server-app/blob/master/src/model/${props.formFile}`}>Source code entity: {props.formFile}</a>
+            <a href={`https://github.com/michalrakus/demo-nest-server-app/blob/master/src/model/${props.sourceCodeFile}`} target="_blank" rel="noopener noreferrer">Source code entity: {props.sourceCodeFile}</a>
         </div>
     );
 }
