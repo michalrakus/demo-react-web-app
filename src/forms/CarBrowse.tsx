@@ -7,12 +7,10 @@ import {SourceCodeLinkEntity} from "./SourceCodeLinkEntity";
 
 export const CarBrowse = (props: {}) => {
 
-    const onEdit = (selectedRow: Car) => {
-        console.log("zavolany CarBrowse.onEdit");
-        console.log(selectedRow);
+    const onEdit = (selectedRow: any) => {
 
-        // onExitForm pridavame automaticky v XFormNavigator2 pri renderovani komponentu
-        (props as any).onExitForm(<CarForm entity="Car" id={selectedRow.idCar}/>);
+        // openForm pridavame automaticky v XFormNavigator3 pri renderovani komponentu
+        (props as any).openForm(<CarForm id={selectedRow.idCar}/>);
     }
 
     return (

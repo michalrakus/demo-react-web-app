@@ -1,6 +1,5 @@
 import React from "react";
 import {Car} from "./Car";
-import {Button} from "primereact/button";
 import {XInputText} from "@michalrakus/x-react-web-lib/XInputText";
 import {FormProps, XFormBase} from "@michalrakus/x-react-web-lib/XFormBase";
 import {XDropdown} from "@michalrakus/x-react-web-lib/XDropdown";
@@ -19,8 +18,11 @@ import {XInputDecimal} from "@michalrakus/x-react-web-lib/XInputDecimal";
 import {XInputDate} from "@michalrakus/x-react-web-lib/XInputDate";
 import {SourceCodeLinkForm} from "./SourceCodeLinkForm";
 import {SourceCodeLinkEntity} from "./SourceCodeLinkEntity";
+import {XButton} from "@michalrakus/x-react-web-lib/XButton";
+import {Form} from "../XLibItems";
 
-export class CarForm extends XFormBase<Car> {
+@Form("Car")
+export class CarForm extends XFormBase {
 
     constructor(props: FormProps) {
         super(props);
@@ -49,7 +51,7 @@ export class CarForm extends XFormBase<Car> {
                 <XDropdown form={this} assocField="brandAssoc" displayField="brand" label="Brand *"/>
                 <XSearchButton form={this} assocField="brandAssoc" displayField="brand" searchTable={<BrandSearchTable paramcek="fiha"/>} assocForm={<BrandForm/>} label="Brand * SB"/>
                 <XToOneAssocButton form={this} assocField="brandAssoc" assocForm={<BrandForm/>} label="Brand * AB"/>
-                <XFormDataTable2 form={this} assocField="driveList" label="Cesty">
+                <XFormDataTable2 form={this} assocField="driveList" label="Drive list">
                     <XFormColumn field="idDrive" header="ID"/>
                     <XFormColumn field="cityFrom" header="From"/>
                     <XFormColumn field="cityTo" header="To"/>
@@ -58,13 +60,11 @@ export class CarForm extends XFormBase<Car> {
                     <XFormColumn field="driveDate" header="Drive Date"/>
                     <XFormColumn field="driveDatetime" header="Drive Datetime"/>
                     <XFormColumn field="country.idCountry" header="ID country"/>
-                    <XFormDropdownColumn assocField="country" displayField="code" header="Krajina Drop" dropdownInFilter={true}/>
-                    <XFormSearchButtonColumn assocField="country" displayField="name" searchTable={<CountrySearchTable/>} header="Krajina SB"/>
+                    <XFormDropdownColumn assocField="country" displayField="code" header="Country Drop" dropdownInFilter={true}/>
+                    <XFormSearchButtonColumn assocField="country" displayField="name" searchTable={<CountrySearchTable/>} header="Country SB"/>
                 </XFormDataTable2>
-                <div className="p-field p-grid">
-                    <Button label="Save" onClick={this.onClickSave} />
-                    <Button label="Cancel" onClick={this.onClickCancel} />
-                </div>
+                <XButton label="Save" onClick={this.onClickSave}/>
+                <XButton label="Cancel" onClick={this.onClickCancel}/>
                 <SourceCodeLinkForm sourceCodeFile="CarForm.tsx"/>
                 <SourceCodeLinkEntity sourceCodeFile="car.entity.ts"/>
             </div>

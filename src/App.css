@@ -20,7 +20,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  /*font-size: calc(10px + 2vmin);*/
+  font-size: 18px; /* nechceme velke label-y */
   color: white;
 }
 
@@ -37,6 +38,16 @@
   }
 }
 
-a {
-  color: red;
+.source-code-link {
+  color: deepskyblue;
+}
+
+/* TODO - do lib-ky presunut */
+/* zvecsenie prazdnej (null) polozky v dropdown-och */
+.p-dropdown-label {
+  min-height: 30px;
+}
+
+.p-dropdown-item {
+  min-height: 33px;
 }
