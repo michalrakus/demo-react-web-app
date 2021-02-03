@@ -39,18 +39,26 @@ export class CarForm extends XFormBase {
     render() {
         return (
             <div>
-                <XInputText form={this} field="idCar" label="ID" readOnly={true}/>
-                <XInputText form={this} field="vin" label="Vin"/>
-                <XInputText form={this} field="brand"/>
-                <XInputText form={this} field="year" label="Year"/>
-                <XInputText form={this} field="color" label="Color"/>
-                <XInputDecimal form={this} field="price" label="Price"/>
-                <XInputDate form={this} field="carDate" label="Car date"/>
-                <XInputDate form={this} field="carDatetime" label="Car datetime"/>
-                <XInputText form={this} field="brandAssoc.idBrand" label="ID Brand"/>
-                <XDropdown form={this} assocField="brandAssoc" displayField="brand" label="Brand *"/>
-                <XSearchButton form={this} assocField="brandAssoc" displayField="brand" searchTable={<BrandSearchTable paramcek="fiha"/>} assocForm={<BrandForm/>} label="Brand * SB"/>
-                <XToOneAssocButton form={this} assocField="brandAssoc" assocForm={<BrandForm/>} label="Brand * AB"/>
+                <div className="p-grid p-m-3">
+                    <div className="p-col">
+                        <XInputText form={this} field="idCar" label="ID" readOnly={true}/>
+                        <XInputText form={this} field="vin" label="Vin"/>
+                        <XInputText form={this} field="brand"/>
+                        <XInputText form={this} field="year" label="Year"/>
+                    </div>
+                    <div className="p-col">
+                        <XInputText form={this} field="color" label="Color"/>
+                        <XInputDecimal form={this} field="price" label="Price"/>
+                        <XInputDate form={this} field="carDate" label="Car date"/>
+                        <XInputDate form={this} field="carDatetime" label="Car datetime"/>
+                    </div>
+                    <div className="p-col">
+                        <XInputText form={this} field="brandAssoc.idBrand" label="ID Brand"/>
+                        <XDropdown form={this} assocField="brandAssoc" displayField="brand" label="Brand *"/>
+                        <XSearchButton form={this} assocField="brandAssoc" displayField="brand" searchTable={<BrandSearchTable paramcek="fiha"/>} assocForm={<BrandForm/>} label="Brand * SB"/>
+                        <XToOneAssocButton form={this} assocField="brandAssoc" assocForm={<BrandForm/>} label="Brand * AB"/>
+                    </div>
+                </div>
                 <XFormDataTable2 form={this} assocField="driveList" label="Drive list">
                     <XFormColumn field="idDrive" header="ID"/>
                     <XFormColumn field="cityFrom" header="From"/>

@@ -44,7 +44,11 @@ export const XMenu = (props: {defaultFormElement?: any; setXToken: (xToken: XTok
         xFormNavigator.current.openRootForm(newFormElement);
     }
 
-    const end: any = "Server: " + XUtils.xServerUrl + "  User: " + XUtils.getUsername();
+    const end: any = (
+        <div className="p-grid">
+            <div className="p-mx-2">Server: {XUtils.xServerUrl}</div><div className="p-mx-2">  User: {XUtils.getUsername()}</div>
+        </div>
+    );
 
     return (
         <div>

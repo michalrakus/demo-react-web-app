@@ -41,11 +41,11 @@ function App() {
 
     let elem;
     if (xToken === null) {
-        elem = <XLoginForm setXToken={setXToken}/>
+        elem = <div className="App-form"><XLoginForm setXToken={setXToken}/></div>;
     }
     else {
         if (!initialized) {
-            elem = <div>App is being initialized...</div>;
+            elem = <div className="App-form">App is being initialized...</div>;
             fetchAndSetXEntityMap();
         }
         else {
@@ -55,9 +55,7 @@ function App() {
 
     return (
         <div className="App">
-            <header className="App-header">
-                {elem}
-            </header>
+            {elem}
         </div>
     );
 }
