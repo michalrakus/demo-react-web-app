@@ -41,7 +41,7 @@ export class CarForm extends XFormBase {
             <div>
                 <div className="p-grid p-m-3">
                     <div className="p-col">
-                        <XInputText form={this} field="idCar" label="ID" readOnly={true}/>
+                        <XInputDecimal form={this} field="idCar" label="ID" readOnly={true}/>
                         <XInputText form={this} field="vin" label="Vin"/>
                         <XInputText form={this} field="brand"/>
                         <XInputDecimal form={this} field="year" label="Year"/>
@@ -53,9 +53,9 @@ export class CarForm extends XFormBase {
                         <XInputDate form={this} field="carDatetime" label="Car datetime"/>
                     </div>
                     <div className="p-col">
-                        <XInputText form={this} field="brandAssoc.idBrand" label="ID Brand"/>
+                        <XInputDecimal form={this} field="brandAssoc.idBrand" label="ID Brand"/>
                         <XDropdown form={this} assocField="brandAssoc" displayField="brand" label="Brand *"/>
-                        <XSearchButton form={this} assocField="brandAssoc" displayField="brand" searchTable={<BrandSearchTable paramcek="fiha"/>} assocForm={<BrandForm/>} label="Brand * SB"/>
+                        <XSearchButton form={this} assocField="brandAssoc" displayField="brand" searchTable={<BrandSearchTable paramcek="fiha"/>} assocForm={<BrandForm/>} label="Brand * SB" size={16}/>
                         <XToOneAssocButton form={this} assocField="brandAssoc" assocForm={<BrandForm/>} label="Brand * AB"/>
                     </div>
                 </div>

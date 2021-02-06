@@ -5,6 +5,7 @@ import {SourceCodeLinkEntity} from "./SourceCodeLinkEntity";
 import {XButton} from "@michalrakus/x-react-web-lib/XButton";
 import {XFormBase} from "@michalrakus/x-react-web-lib/XFormBase";
 import {Form} from "../XLibItems";
+import {XInputDecimal} from "@michalrakus/x-react-web-lib/XInputDecimal";
 
 @Form("Brand")
 export class BrandForm extends XFormBase {
@@ -12,7 +13,7 @@ export class BrandForm extends XFormBase {
     render() {
         return (
             <div>
-                <XInputText form={this} field="idBrand" label="ID" readOnly={true}/>
+                <XInputDecimal form={this} field="idBrand" label="ID" readOnly={true}/>
                 <XInputText form={this} field="brand"/>
                 <XButton label="Save" onClick={this.onClickSave}/>
                 <XButton label="Cancel" onClick={this.onClickCancel}/>

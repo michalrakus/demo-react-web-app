@@ -66,3 +66,11 @@
 .p-dropdown-item {
   min-height: 33px;
 }
+
+.p-calendar .x-input-date {
+  width: 85px;
+}
+
+.p-calendar .x-input-datetime {
+  width: 145px;
+}

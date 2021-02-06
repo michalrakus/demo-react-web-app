@@ -18,8 +18,8 @@ import './App.css'; // bol povodne ako prve css
 
 // provizorne takto, musi byt nastavene pred prvym requestom na server
 // neda sa pouzit parameter sposobom process.env.X_SERVER_URL, lebo aplikacia bezi vo webbrowseri
-//const xServerUrl = 'http://localhost:8081/';
-const xServerUrl = 'https://x-demo-server.herokuapp.com/';
+const xServerUrl = 'http://localhost:8081/';
+//const xServerUrl = 'https://x-demo-server.herokuapp.com/';
 XUtils.setXServerUrl(xServerUrl);
 
 // TODO - v buducnosti presunut do XReactWebLib
