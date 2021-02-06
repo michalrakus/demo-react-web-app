@@ -44,7 +44,7 @@ export class CarForm extends XFormBase {
                         <XInputText form={this} field="idCar" label="ID" readOnly={true}/>
                         <XInputText form={this} field="vin" label="Vin"/>
                         <XInputText form={this} field="brand"/>
-                        <XInputText form={this} field="year" label="Year"/>
+                        <XInputDecimal form={this} field="year" label="Year"/>
                     </div>
                     <div className="p-col">
                         <XInputText form={this} field="color" label="Color"/>
@@ -60,7 +60,7 @@ export class CarForm extends XFormBase {
                     </div>
                 </div>
                 <XFormDataTable2 form={this} assocField="driveList" label="Drive list">
-                    <XFormColumn field="idDrive" header="ID"/>
+                    <XFormColumn field="idDrive" header="ID" readOnly={true}/>
                     <XFormColumn field="cityFrom" header="From"/>
                     <XFormColumn field="cityTo" header="To"/>
                     <XFormColumn field="km"/>
