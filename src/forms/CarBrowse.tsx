@@ -15,7 +15,7 @@ export const CarBrowse = (props: {}) => {
 
     return (
         <div>
-            <XLazyDataTable entity="Car" rows={7} onEdit={onEdit} displayed={(props as any).displayed}>
+            <XLazyDataTable entity="Car" rows={15} onEdit={onEdit} displayed={(props as any).displayed}>
                 <XLazyColumn field="idCar" header="ID"/>
                 <XLazyColumn field="vin" header="Vin"/>
                 <XLazyColumn field="year" header="Year"/>

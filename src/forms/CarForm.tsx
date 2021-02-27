@@ -55,11 +55,11 @@ export class CarForm extends XFormBase {
                     <div className="p-col">
                         <XInputDecimal form={this} field="brandAssoc.idBrand" label="ID Brand"/>
                         <XDropdown form={this} assocField="brandAssoc" displayField="brand" label="Brand *"/>
-                        <XSearchButton form={this} assocField="brandAssoc" displayField="brand" searchTable={<BrandSearchTable paramcek="fiha"/>} assocForm={<BrandForm/>} label="Brand * SB" size={16}/>
+                        <XSearchButton form={this} assocField="brandAssoc" displayField="brand" searchTable={<BrandSearchTable paramExample="param example"/>} assocForm={<BrandForm/>} label="Brand * SB" size={16}/>
                         <XToOneAssocButton form={this} assocField="brandAssoc" assocForm={<BrandForm/>} label="Brand * AB"/>
                     </div>
                 </div>
-                <XFormDataTable2 form={this} assocField="driveList" label="Drive list">
+                <XFormDataTable2 form={this} assocField="driveList" label="Drive list" /*width="min-content"*/>
                     <XFormColumn field="idDrive" header="ID" readOnly={true}/>
                     <XFormColumn field="cityFrom" header="From"/>
                     <XFormColumn field="cityTo" header="To"/>

@@ -74,3 +74,44 @@
 .p-calendar .x-input-datetime {
   width: 145px;
 }
+
+/* this css centers buttons in search dialog (XSearchButton, XSearchButtonDT) */
+.x-lazy-datatable {
+  text-align: center;
+}
+
+/* no line break in table headers (every row has only one line) */
+.p-datatable tr > th {
+  white-space: nowrap;
+}
+
+/* no line break in tables (every row has only one line) - shoud be used with resizable columns */
+/* "overflow: hidden" znefunkcni dropdown-y v editovatelnej tabulke a pre textove stlpce sa to momentalne neuplatnuje lebo stlpce sa rozsiria ked maju velky obsah
+   "white-space: nowrap;" nema moc velky vyznam ak nemame "overflow: hidden"
+.p-datatable tr > td {
+  white-space: nowrap;
+  overflow: hidden;
+}
+*/
+
+/* inputs in editable datatable should be as wide as the column, second selector is for inputnumber (inputnumber has span wrapper) */
+.x-form-datatable tr > td .x-input-to-resize, .p-datatable tr > td .x-input-to-resize > .p-inputnumber-input {
+  width: 100%;
+}
+
+/* editable datatable - padding shrinked from 7px to 3px (to save space) */
+.p-datatable.p-datatable-sm.x-form-datatable .p-datatable-thead > tr > th.p-filter-column,
+.p-datatable.p-datatable-sm.x-form-datatable .p-datatable-tbody > tr > td {
+  padding: 3px;
+}
+
+/* normal datatable - padding shrinked from 7px to 3px (to save space) only in header */
+.p-datatable.p-datatable-sm .p-datatable-thead > tr > th.p-filter-column {
+  padding: 3px;
+}
+
+/* default is 100%, min-content preserves the widths of the columns (width of the datatable is sum of all columns) */
+.p-datatable table {
+  /*width: min-content;*/
+  width: auto;
+}
