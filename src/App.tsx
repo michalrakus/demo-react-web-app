@@ -9,7 +9,6 @@ import useXToken from "@michalrakus/x-react-web-lib/lib/components/useXToken";
 import {XUtils} from "@michalrakus/x-react-web-lib/XUtils";
 
 import 'primereact/resources/themes/saga-blue/theme.css';
-//import 'primereact/resources/themes/nova-light/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
@@ -33,9 +32,11 @@ function App() {
     //     fetchAndSetXEntityMap();
     // },[]); // eslint-disable-line react-hooks/exhaustive-deps
 
-    const fetchAndSetXEntityMap = async () => {
+    const fetchAndSetXMetadata = async () => {
         await XUtilsMetadata.fetchAndSetXEntityMap();
         console.log("App - bol zavolany XUtilsMetadata.fetchAndSetXEntityMap()");
+        await XUtilsMetadata.fetchAndSetXBrowseMetaMap();
+        console.log("App - bol zavolany XUtilsMetadata.fetchAndSetXBrowseMetaMap()");
         setInitialized(true);
     }
 
@@ -46,7 +47,7 @@ function App() {
     else {
         if (!initialized) {
             elem = <div className="App-form">App is being initialized...</div>;
-            fetchAndSetXEntityMap();
+            fetchAndSetXMetadata();
         }
         else {
             elem = <XMenu defaultFormElement={<CarBrowse/>} setXToken={setXToken}/>;

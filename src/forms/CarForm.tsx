@@ -1,5 +1,4 @@
 import React from "react";
-import {Car} from "./Car";
 import {XInputText} from "@michalrakus/x-react-web-lib/XInputText";
 import {FormProps, XFormBase} from "@michalrakus/x-react-web-lib/XFormBase";
 import {XDropdown} from "@michalrakus/x-react-web-lib/XDropdown";
@@ -20,6 +19,7 @@ import {SourceCodeLinkForm} from "./SourceCodeLinkForm";
 import {SourceCodeLinkEntity} from "./SourceCodeLinkEntity";
 import {XButton} from "@michalrakus/x-react-web-lib/XButton";
 import {Form} from "../XLibItems";
+import {XUtils} from "@michalrakus/x-react-web-lib/XUtils";
 
 @Form("Car")
 export class CarForm extends XFormBase {
@@ -79,3 +79,5 @@ export class CarForm extends XFormBase {
         );
     }
 }
+
+XUtils.registerAppForm(<CarForm/>, "Car");

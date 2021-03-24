@@ -6,6 +6,7 @@ import {XButton} from "@michalrakus/x-react-web-lib/XButton";
 import {XFormBase} from "@michalrakus/x-react-web-lib/XFormBase";
 import {Form} from "../XLibItems";
 import {XInputDecimal} from "@michalrakus/x-react-web-lib/XInputDecimal";
+import {XUtils} from "@michalrakus/x-react-web-lib/XUtils";
 
 @Form("Brand")
 export class BrandForm extends XFormBase {
@@ -23,3 +24,5 @@ export class BrandForm extends XFormBase {
         );
     }
 }
+
+XUtils.registerAppForm(<BrandForm/>, "Brand");

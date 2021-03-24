@@ -7,27 +7,38 @@ import {TestovaciForm} from "./forms/TestovaciForm";
 import {XToken} from "@michalrakus/x-react-web-lib/XToken";
 import {XUtils} from "@michalrakus/x-react-web-lib/XUtils";
 import {XUserBrowse} from "@michalrakus/x-react-web-lib/XUserBrowse";
+import {XBrowse} from "@michalrakus/x-react-web-lib/XBrowse";
+import {XBrowseMetaBrowse} from "@michalrakus/x-react-web-lib/XBrowseMetaBrowse";
+import {XHolder1, XHolder2} from "@michalrakus/x-react-web-lib/XHolders";
 
 // TODO - v buducnosti presunut do XReactWebLib
 export const XMenu = (props: {defaultFormElement?: any; setXToken: (xToken: XToken | null) => void;}) => {
 
-    const [form, setForm] = useState<any>(props.defaultFormElement);
-    const xFormNavigator = React.createRef<XFormNavigator3>();
+    const [rootFormElement, setRootFormElement] = useState<any>(props.defaultFormElement);
+    const [renderHolder1, setRenderHolder1] = useState<boolean>(true);
 
     const items = [
         {
             label:'Application',
             items:[
                 {label:'Brand', command: () => {openForm(<BrandBrowse/>);}},
-                {label:'Car', command: () => {openForm(<CarBrowse/>);}},
-                {label:'Prazdne', command: () => {openForm(null);}},
-                {label:'Testovaci', command: () => {openForm(<TestovaciForm/>);}}
+                {label:'Car', command: () => {openForm(<CarBrowse/>);}}
+                //{label:'Prazdne', command: () => {openForm(null);}},
+                //{label:'Testovaci', command: () => {openForm(<TestovaciForm/>);}}
+            ]
+        },
+        {
+            label:'Runtime edit',
+            items:[
+                {label:'Brand - runtime edit', command: () => {openForm(<XBrowse entity="Brand"/>);}},
+                {label:'Car - runtime edit', command: () => {openForm(<XBrowse entity="Car"/>);}}
             ]
         },
         {
             label:'Administration',
             items:[
-                {label:'Users', command: () => {openForm(<XUserBrowse/>);}}
+                {label:'Users', command: () => {openForm(<XUserBrowse/>);}},
+                {label:'Browses', command: () => {openForm(<XBrowseMetaBrowse/>);}}
             ]
         },
         {
@@ -38,10 +49,11 @@ export const XMenu = (props: {defaultFormElement?: any; setXToken: (xToken: XTok
     ];
 
     const openForm = (newFormElement: any) => {
-        if (xFormNavigator.current === null) {
-            throw "Unexpected error - xFormNavigator.current is null";
-        }
-        xFormNavigator.current.openRootForm(newFormElement);
+        setRootFormElement(newFormElement);
+        // we want refresh the whole element tree (call constructors of class components, call componentDidMount methods to refresh data, ...)
+        // change of Holder1 to Holder2 and back will cause mounting of new component tree
+        // without this, changing from <XBrowse entity="Brand"/> to <XBrowse entity="Car"/> will not work (component tree will not change)
+        setRenderHolder1(!renderHolder1);
     }
 
     const end: any = (
@@ -50,10 +62,19 @@ export const XMenu = (props: {defaultFormElement?: any; setXToken: (xToken: XTok
         </div>
     );
 
+    // little workaround - see remark in function openForm
+    let holderWithNavigator;
+    if (renderHolder1) {
+        holderWithNavigator = <XHolder1 element={<XFormNavigator3 rootFormElement={rootFormElement}/>}/>;
+    }
+    else {
+        holderWithNavigator = <XHolder2 element={<XFormNavigator3 rootFormElement={rootFormElement}/>}/>;
+    }
+
     return (
         <div>
             <Menubar model={items} end={end} className="p-mb-1"/>
-            <XFormNavigator3 ref={xFormNavigator} initFormElement={form}/>
+            {holderWithNavigator}
         </div>
     );
 }

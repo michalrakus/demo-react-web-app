@@ -115,3 +115,17 @@
   /*width: min-content;*/
   width: auto;
 }
+
+.x-field-treetable table {
+  width: 350px;
+}
+
+/* small button with icon (component XButtonIconSmall) */
+.p-button.x-button-icon-small {
+  width: auto;
+  padding: 3px;
+  margin: 1px;
+}
+.p-button.x-button-icon-small > .p-button-label {
+  height: 0px;
+}

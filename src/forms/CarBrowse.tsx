@@ -1,11 +1,16 @@
 import React from "react";
-import {Car} from "./Car";
 import {XLazyColumn, XLazyDataTable} from "@michalrakus/x-react-web-lib/XLazyDataTable";
 import {CarForm} from "./CarForm";
 import {SourceCodeLinkForm} from "./SourceCodeLinkForm";
 import {SourceCodeLinkEntity} from "./SourceCodeLinkEntity";
 
 export const CarBrowse = (props: {}) => {
+
+    const onAddRow = () => {
+
+        // openForm pridavame automaticky v XFormNavigator3 pri renderovani komponentu
+        (props as any).openForm(<CarForm object={{driveList: []}}/>);
+    }
 
     const onEdit = (selectedRow: any) => {
 
@@ -15,7 +20,7 @@ export const CarBrowse = (props: {}) => {
 
     return (
         <div>
-            <XLazyDataTable entity="Car" rows={15} onEdit={onEdit} displayed={(props as any).displayed}>
+            <XLazyDataTable entity="Car" rows={15} onAddRow={onAddRow} onEdit={onEdit} displayed={(props as any).displayed}>
                 <XLazyColumn field="idCar" header="ID"/>
                 <XLazyColumn field="vin" header="Vin"/>
                 <XLazyColumn field="year" header="Year"/>
