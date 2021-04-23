@@ -3,13 +3,14 @@ import {Menubar} from "primereact/menubar";
 import {CarBrowse} from "./forms/CarBrowse";
 import {XFormNavigator3} from "@michalrakus/x-react-web-lib/XFormNavigator3";
 import {BrandBrowse} from "./forms/BrandBrowse";
-import {TestovaciForm} from "./forms/TestovaciForm";
 import {XToken} from "@michalrakus/x-react-web-lib/XToken";
 import {XUtils} from "@michalrakus/x-react-web-lib/XUtils";
 import {XUserBrowse} from "@michalrakus/x-react-web-lib/XUserBrowse";
 import {XBrowse} from "@michalrakus/x-react-web-lib/XBrowse";
 import {XBrowseMetaBrowse} from "@michalrakus/x-react-web-lib/XBrowseMetaBrowse";
 import {XHolder1, XHolder2} from "@michalrakus/x-react-web-lib/XHolders";
+import {CarBrowseImport} from "./forms/CarBrowseImport";
+import {XChangePasswordForm} from "@michalrakus/x-react-web-lib/XChangePasswordForm";
 
 // TODO - v buducnosti presunut do XReactWebLib
 export const XMenu = (props: {defaultFormElement?: any; setXToken: (xToken: XToken | null) => void;}) => {
@@ -23,6 +24,7 @@ export const XMenu = (props: {defaultFormElement?: any; setXToken: (xToken: XTok
             items:[
                 {label:'Brand', command: () => {openForm(<BrandBrowse/>);}},
                 {label:'Car', command: () => {openForm(<CarBrowse/>);}}
+                //{label:'Car - import', command: () => {openForm(<CarBrowseImport/>);}}
                 //{label:'Prazdne', command: () => {openForm(null);}},
                 //{label:'Testovaci', command: () => {openForm(<TestovaciForm/>);}}
             ]
@@ -38,7 +40,8 @@ export const XMenu = (props: {defaultFormElement?: any; setXToken: (xToken: XTok
             label:'Administration',
             items:[
                 {label:'Users', command: () => {openForm(<XUserBrowse/>);}},
-                {label:'Browses', command: () => {openForm(<XBrowseMetaBrowse/>);}}
+                {label:'Browses', command: () => {openForm(<XBrowseMetaBrowse/>);}},
+                {label:'Change password', command: () => {openForm(<XChangePasswordForm setXToken={props.setXToken}/>);}}
             ]
         },
         {

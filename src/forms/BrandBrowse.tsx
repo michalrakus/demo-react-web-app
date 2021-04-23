@@ -20,7 +20,7 @@ export const BrandBrowse = (props: {}) => {
 
     return (
         <div>
-            <XLazyDataTable entity="Brand" rows={5} onAddRow={onAddRow} onEdit={onEdit} removeRow={true} width="min-content" displayed={(props as any).displayed}>
+            <XLazyDataTable entity="Brand" rows={15} onAddRow={onAddRow} onEdit={onEdit} removeRow={true} displayed={(props as any).displayed}>
                 <XLazyColumn field="idBrand" header="ID"/>
                 <XLazyColumn field="brand" header="Brand"/>
             </XLazyDataTable>

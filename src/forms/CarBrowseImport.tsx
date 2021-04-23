@@ -1,26 +1,30 @@
-import React from "react";
+import React, {useState} from "react";
 import {XLazyColumn, XLazyDataTable} from "@michalrakus/x-react-web-lib/XLazyDataTable";
-import {CarForm} from "./CarForm";
 import {SourceCodeLinkForm} from "./SourceCodeLinkForm";
 import {SourceCodeLinkEntity} from "./SourceCodeLinkEntity";
+import {XButton} from "@michalrakus/x-react-web-lib/XButton";
+import {XImportRowsDialog} from "./XImportRowsDialog";
 
-export const CarBrowse = (props: {}) => {
+// obsahuje rozrobeny import - pozri XImportRowsDialog a AppController na servri
+export const CarBrowseImport = (props: {}) => {
 
-    const onAddRow = () => {
+    const [importRowsDialogOpened, setImportRowsDialogOpened] = useState(false);
 
-        // openForm pridavame automaticky v XFormNavigator3 pri renderovani komponentu
-        (props as any).openForm(<CarForm object={{driveList: []}}/>);
+    const onClickImport = () => {
+        setImportRowsDialogOpened(true);
     }
 
-    const onEdit = (selectedRow: any) => {
-
-        // openForm pridavame automaticky v XFormNavigator3 pri renderovani komponentu
-        (props as any).openForm(<CarForm id={selectedRow.idCar}/>);
+    const importRowsDialogOnHide = (rowsImported: boolean) => {
+        setImportRowsDialogOpened(false);
+        // TODO
+        if (rowsImported) {
+            // setRereadData(true);
+        }
     }
 
     return (
         <div>
-            <XLazyDataTable entity="Car" rows={15} onAddRow={onAddRow} onEdit={onEdit} displayed={(props as any).displayed}>
+            <XLazyDataTable entity="Car" rows={15} displayed={(props as any).displayed}>
                 <XLazyColumn field="idCar" header="ID"/>
                 <XLazyColumn field="vin" header="Vin"/>
                 <XLazyColumn field="year" header="Year"/>
@@ -32,8 +36,10 @@ export const CarBrowse = (props: {}) => {
                 <XLazyColumn field="carDatetime" header="Car Datetime"/>
                 <XLazyColumn field="carBoolean" header="Car Boolean"/>
             </XLazyDataTable>
+            <XButton label="Import rows" onClick={onClickImport} />
             <SourceCodeLinkForm sourceCodeFile="CarBrowse.tsx"/>
             <SourceCodeLinkEntity sourceCodeFile="car.entity.ts"/>
+            <XImportRowsDialog dialogOpened={importRowsDialogOpened} importServicePath="importCarCsv" entity="Car" onHideDialog={importRowsDialogOnHide}/>
         </div>
     );
 }

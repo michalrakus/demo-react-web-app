@@ -20,6 +20,7 @@ import {SourceCodeLinkEntity} from "./SourceCodeLinkEntity";
 import {XButton} from "@michalrakus/x-react-web-lib/XButton";
 import {Form} from "../XLibItems";
 import {XUtils} from "@michalrakus/x-react-web-lib/XUtils";
+import {XCheckbox} from "@michalrakus/x-react-web-lib/XCheckbox";
 
 @Form("Car")
 export class CarForm extends XFormBase {
@@ -51,6 +52,7 @@ export class CarForm extends XFormBase {
                         <XInputDecimal form={this} field="price" label="Price"/>
                         <XInputDate form={this} field="carDate" label="Car date"/>
                         <XInputDate form={this} field="carDatetime" label="Car datetime"/>
+                        <XCheckbox form={this} field="carBoolean" label="Car boolean"/>
                     </div>
                     <div className="p-col">
                         <XInputDecimal form={this} field="brandAssoc.idBrand" label="ID Brand"/>
@@ -67,9 +69,10 @@ export class CarForm extends XFormBase {
                     <XFormColumn field="fuelPrice" header="Fuel - price"/>
                     <XFormColumn field="driveDate" header="Drive Date"/>
                     <XFormColumn field="driveDatetime" header="Drive Datetime"/>
+                    <XFormColumn field="driveBoolean" header="Boolean"/>
                     <XFormColumn field="country.idCountry" header="ID country"/>
                     <XFormDropdownColumn assocField="country" displayField="code" header="Country Drop" dropdownInFilter={true}/>
-                    <XFormSearchButtonColumn assocField="country" displayField="name" searchTable={<CountrySearchTable/>} header="Country SB"/>
+                    <XFormSearchButtonColumn assocField="country" displayField="name" searchTable={<CountrySearchTable/>} header="Country SB" width="200px"/>
                 </XFormDataTable2>
                 <XButton label="Save" onClick={this.onClickSave}/>
                 <XButton label="Cancel" onClick={this.onClickCancel}/>
