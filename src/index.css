@@ -75,6 +75,14 @@ input[type="number"]::-webkit-inner-spin-button {
   }
 }
 
+/* toto cele asi prislo s nejakym primereact example - pouziva sa (pravdepodobne) len selector .p-column-filter */
+
+/* roztahuje filter na celu sirku stlpca tabulky */
+.p-column-filter {
+  width: 100%;
+}
+
+/*
 .customer-badge {
   border-radius: 2px;
   padding: .25em .5rem;
@@ -186,9 +194,7 @@ input[type="number"]::-webkit-inner-spin-button {
   margin-top: .125rem;
 }
 
-.p-column-filter {
-  width: 100%;
-}
+tu bol selector .p-column-filter
 
 .country-item {
   display: flex;
@@ -213,4 +219,4 @@ span.flag {
 img.flag {
   width:30px
 }
-
+*/

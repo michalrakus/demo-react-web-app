@@ -21,6 +21,8 @@ import {XButton} from "@michalrakus/x-react-web-lib/XButton";
 import {Form} from "../XLibItems";
 import {XUtils} from "@michalrakus/x-react-web-lib/XUtils";
 import {XCheckbox} from "@michalrakus/x-react-web-lib/XCheckbox";
+import {XObject} from "@michalrakus/x-react-web-lib/lib/components/XObject";
+import {XErrors} from "@michalrakus/x-react-web-lib/XErrors";
 
 @Form("Car")
 export class CarForm extends XFormBase {
@@ -37,6 +39,15 @@ export class CarForm extends XFormBase {
         this.onTableAddRow("driveList", {cityFrom: "fachci"}, "idDrive");
     };
 
+    // overrides method in XFormBase
+    validate(object: XObject): XErrors {
+        const errors: XErrors = {};
+        if (object.vin && object.vin.length < 3) {
+            errors.vin = "Vin length must be at least 3.";
+        }
+        return errors;
+    }
+
     render() {
         return (
             <div>
@@ -44,7 +55,7 @@ export class CarForm extends XFormBase {
                     <div className="p-col">
                         <XInputDecimal form={this} field="idCar" label="ID" readOnly={true}/>
                         <XInputText form={this} field="vin" label="Vin"/>
-                        <XInputText form={this} field="brand"/>
+                        <XInputText form={this} field="brand" label="Brand string"/>
                         <XInputDecimal form={this} field="year" label="Year"/>
                     </div>
                     <div className="p-col">
@@ -56,9 +67,9 @@ export class CarForm extends XFormBase {
                     </div>
                     <div className="p-col">
                         <XInputDecimal form={this} field="brandAssoc.idBrand" label="ID Brand"/>
-                        <XDropdown form={this} assocField="brandAssoc" displayField="brand" label="Brand *"/>
-                        <XSearchButton form={this} assocField="brandAssoc" displayField="brand" searchTable={<BrandSearchTable paramExample="param example"/>} assocForm={<BrandForm/>} label="Brand * SB" size={16}/>
-                        <XToOneAssocButton form={this} assocField="brandAssoc" assocForm={<BrandForm/>} label="Brand * AB"/>
+                        <XDropdown form={this} assocField="brandAssoc" displayField="brand" label="Brand assoc D"/>
+                        <XSearchButton form={this} assocField="brandAssoc" displayField="brand" searchTable={<BrandSearchTable paramExample="param example"/>} assocForm={<BrandForm/>} label="Brand assoc SB" size={16}/>
+                        <XToOneAssocButton form={this} assocField="brandAssoc" assocForm={<BrandForm/>} label="Brand assoc AB"/>
                     </div>
                 </div>
                 <XFormDataTable2 form={this} assocField="driveList" label="Drive list" /*width="min-content"*/>

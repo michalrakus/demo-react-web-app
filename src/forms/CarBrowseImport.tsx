@@ -28,8 +28,8 @@ export const CarBrowseImport = (props: {}) => {
                 <XLazyColumn field="idCar" header="ID"/>
                 <XLazyColumn field="vin" header="Vin"/>
                 <XLazyColumn field="year" header="Year"/>
-                <XLazyColumn field="brand" header="Brand"/>
-                <XLazyColumn field="brandAssoc.brand" header="Brand *" dropdownInFilter={true}/>
+                <XLazyColumn field="brand" header="Brand string"/>
+                <XLazyColumn field="brandAssoc.brand" header="Brand assoc" dropdownInFilter={true}/>
                 <XLazyColumn field="color" header="Color"/>
                 <XLazyColumn field="price" header="Price"/>
                 <XLazyColumn field="carDate" header="Car Date"/>
