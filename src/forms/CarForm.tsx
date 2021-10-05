@@ -17,12 +17,13 @@ import {XInputDecimal} from "@michalrakus/x-react-web-lib/XInputDecimal";
 import {XInputDate} from "@michalrakus/x-react-web-lib/XInputDate";
 import {SourceCodeLinkForm} from "./SourceCodeLinkForm";
 import {SourceCodeLinkEntity} from "./SourceCodeLinkEntity";
-import {XButton} from "@michalrakus/x-react-web-lib/XButton";
 import {Form} from "../XLibItems";
 import {XUtils} from "@michalrakus/x-react-web-lib/XUtils";
 import {XCheckbox} from "@michalrakus/x-react-web-lib/XCheckbox";
 import {XObject} from "@michalrakus/x-react-web-lib/lib/components/XObject";
 import {XErrors} from "@michalrakus/x-react-web-lib/XErrors";
+import {XAutoComplete} from "@michalrakus/x-react-web-lib/XAutoComplete";
+import {XFormFooter} from "@michalrakus/x-react-web-lib/XFormFooter";
 
 @Form("Car")
 export class CarForm extends XFormBase {
@@ -51,29 +52,30 @@ export class CarForm extends XFormBase {
     render() {
         return (
             <div>
-                <div className="p-grid p-m-3">
-                    <div className="p-col">
+                <div className="grid m-3">
+                    <div className="col">
                         <XInputDecimal form={this} field="idCar" label="ID" readOnly={true}/>
                         <XInputText form={this} field="vin" label="Vin"/>
                         <XInputText form={this} field="brand" label="Brand string"/>
                         <XInputDecimal form={this} field="year" label="Year"/>
                     </div>
-                    <div className="p-col">
+                    <div className="col">
                         <XInputText form={this} field="color" label="Color"/>
                         <XInputDecimal form={this} field="price" label="Price"/>
                         <XInputDate form={this} field="carDate" label="Car date"/>
                         <XInputDate form={this} field="carDatetime" label="Car datetime"/>
                         <XCheckbox form={this} field="carBoolean" label="Car boolean"/>
                     </div>
-                    <div className="p-col">
+                    <div className="col">
                         <XInputDecimal form={this} field="brandAssoc.idBrand" label="ID Brand"/>
                         <XDropdown form={this} assocField="brandAssoc" displayField="brand" label="Brand assoc D"/>
                         <XSearchButton form={this} assocField="brandAssoc" displayField="brand" searchTable={<BrandSearchTable paramExample="param example"/>} assocForm={<BrandForm/>} label="Brand assoc SB" size={16}/>
+                        <XAutoComplete form={this} assocField="brandAssoc" displayField="brand" assocForm={<BrandForm/>} label="Brand assoc AC"/>
                         <XToOneAssocButton form={this} assocField="brandAssoc" assocForm={<BrandForm/>} label="Brand assoc AB"/>
                     </div>
                 </div>
-                <XFormDataTable2 form={this} assocField="driveList" label="Drive list" /*width="min-content"*/>
-                    <XFormColumn field="idDrive" header="ID" readOnly={true}/>
+                <XFormDataTable2 form={this} assocField="driveList" label="Drive list">
+                    <XFormColumn field="idDrive" header="ID" readOnly={true} width="4rem"/>
                     <XFormColumn field="cityFrom" header="From"/>
                     <XFormColumn field="cityTo" header="To"/>
                     <XFormColumn field="km"/>
@@ -83,10 +85,9 @@ export class CarForm extends XFormBase {
                     <XFormColumn field="driveBoolean" header="Boolean"/>
                     <XFormColumn field="country.idCountry" header="ID country"/>
                     <XFormDropdownColumn assocField="country" displayField="code" header="Country Drop" dropdownInFilter={true}/>
-                    <XFormSearchButtonColumn assocField="country" displayField="name" searchTable={<CountrySearchTable/>} header="Country SB" width="200px"/>
+                    <XFormSearchButtonColumn assocField="country" displayField="name" searchTable={<CountrySearchTable/>} header="Country SB" width="12rem"/>
                 </XFormDataTable2>
-                <XButton label="Save" onClick={this.onClickSave}/>
-                <XButton label="Cancel" onClick={this.onClickCancel}/>
+                <XFormFooter form={this}/>
                 <SourceCodeLinkForm sourceCodeFile="CarForm.tsx"/>
                 <SourceCodeLinkEntity sourceCodeFile="car.entity.ts"/>
             </div>

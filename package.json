@@ -1,13 +1,13 @@
 {
   "name": "DemoReactWebApp",
   "version": "1.0.0",
-  "homepage": ".",
+  "homepage": "/x-demo-app/",
   "private": true,
   "engines": {
     "node": "14.x"
   },
   "dependencies": {
-    "@michalrakus/x-react-web-lib": "^0.20.0",
+    "@michalrakus/x-react-web-lib": "^0.22.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -20,7 +20,7 @@
     "axios": "^0.19.0",
     "classnames": "^2.2.6",
     "dateformat": "^4.4.1",
-    "primeflex": "2.0.0",
+    "primeflex": "3.0.1",
     "primeicons": "^4.1.0",
     "primereact": "latest",
     "react": "^17.0.1",

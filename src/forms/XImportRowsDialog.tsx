@@ -66,21 +66,21 @@ export const XImportRowsDialog = (props: {dialogOpened: boolean; importServicePa
     // (see https://medium.com/web-dev-survey-from-kyoto/how-to-customize-the-file-upload-button-in-react-b3866a5973d8)
     return (
         <Dialog visible={props.dialogOpened} onShow={onShow} onHide={() => props.onHideDialog(false)}>
-            <div className="p-field p-grid">
+            <div className="field grid">
                 <XButton label="Choose file" onClick={onChooseFile}/>
                 <input type="file" ref={hiddenFileInput} onChange={onChangeFile} style={{display:'none'}} accept=".json,.csv"/>
                 <InputText value={selectedFile ? `${selectedFile.name}, ${selectedFile.size} B` : "No file selected"} readOnly={true}/>
             </div>
-            <div className="p-field p-grid">
-                <label htmlFor="ignoreHeaderLine" className="p-col-fixed" style={{width:'130px'}}>Ignore header line</label>
+            <div className="field grid">
+                <label htmlFor="ignoreHeaderLine" className="col-fixed" style={{width:'9.3rem'}}>Ignore header line</label>
                 <Checkbox id="ignoreHeaderLine" checked={ignoreHeaderLine} onChange={(e: any) => setIgnoreHeaderLine(e.checked)}/>
             </div>
-            <div className="p-field p-grid">
-                <label htmlFor="csvSeparator" className="p-col-fixed" style={{width:'130px'}}>Csv separator</label>
+            <div className="field grid">
+                <label htmlFor="csvSeparator" className="col-fixed" style={{width:'9.3rem'}}>Csv separator</label>
                 <Dropdown value={csvSeparator} options={XUtils.csvSeparatorOptions} onChange={(e: any) => setCsvSeparator(e.value)}/>
             </div>
-            <div className="p-field p-grid">
-                <label htmlFor="decimalFormat" className="p-col-fixed" style={{width:'130px'}}>Decimal format</label>
+            <div className="field grid">
+                <label htmlFor="decimalFormat" className="col-fixed" style={{width:'9.3rem'}}>Decimal format</label>
                 <Dropdown value={decimalFormat} options={XUtils.decimalFormatOptions} onChange={(e: any) => setDecimalFormat(e.value)}/>
             </div>
             <XButton label="Import" onClick={onImport}/>

@@ -60,8 +60,8 @@ export const XMenu = (props: {defaultFormElement?: any; setXToken: (xToken: XTok
     }
 
     const end: any = (
-        <div className="p-grid">
-            <div className="p-mx-2">Server: {XUtils.xServerUrl}</div><div className="p-mx-2">  User: {XUtils.getUsername()}</div>
+        <div className="grid">
+            <div className="mx-2">Server: {XUtils.xServerUrl}</div><div className="mx-2">  User: {XUtils.getUsername()}</div>
         </div>
     );
 
@@ -76,7 +76,7 @@ export const XMenu = (props: {defaultFormElement?: any; setXToken: (xToken: XTok
 
     return (
         <div>
-            <Menubar model={items} end={end} className="p-mb-1"/>
+            <Menubar model={items} end={end} className="mb-1"/>
             {holderWithNavigator}
         </div>
     );

@@ -36,7 +36,9 @@ export const CarBrowseImport = (props: {}) => {
                 <XLazyColumn field="carDatetime" header="Car Datetime"/>
                 <XLazyColumn field="carBoolean" header="Car Boolean"/>
             </XLazyDataTable>
-            <XButton label="Import rows" onClick={onClickImport} />
+            <div className="flex justify-content-center">
+                <XButton label="Import rows" onClick={onClickImport} />
+            </div>
             <SourceCodeLinkForm sourceCodeFile="CarBrowse.tsx"/>
             <SourceCodeLinkEntity sourceCodeFile="car.entity.ts"/>
             <XImportRowsDialog dialogOpened={importRowsDialogOpened} importServicePath="importCarCsv" entity="Car" onHideDialog={importRowsDialogOnHide}/>

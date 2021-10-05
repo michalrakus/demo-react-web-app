@@ -32,17 +32,17 @@ export const CarBrowse = (props: {}) => {
 
     return (
         <div>
-            <XLazyDataTable entity="Car" rows={15} onAddRow={onAddRow} onEdit={onEdit} removeRow={false} displayed={(props as any).displayed}>
+            <XLazyDataTable entity="Car" rows={15} /*scrollWidth="60rem" scrollHeight="30rem"*/ onAddRow={onAddRow} onEdit={onEdit} removeRow={false} displayed={(props as any).displayed}>
                 <XLazyColumn field="idCar" header="ID"/>
                 <XLazyColumn field="vin" header="Vin"/>
-                <XLazyColumn field="year" header="Year"/>
+                <XLazyColumn field="year" header="Year" width="4.5rem"/>
                 <XLazyColumn field="brand" header="Brand string"/>
                 <XLazyColumn field="brandAssoc.brand" header="Brand assoc" dropdownInFilter={true}/>
                 <XLazyColumn field="color" header="Color"/>
                 <XLazyColumn field="price" header="Price"/>
                 <XLazyColumn field="carDate" header="Car Date"/>
                 <XLazyColumn field="carDatetime" header="Car Datetime"/>
-                <XLazyColumn field="carBoolean" header="Car Boolean"/>
+                <XLazyColumn field="carBoolean" header="Car Boolean" width="8rem"/>
             </XLazyDataTable>
             <SourceCodeLinkForm sourceCodeFile="CarBrowse.tsx"/>
             <SourceCodeLinkEntity sourceCodeFile="car.entity.ts"/>

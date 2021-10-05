@@ -1,5 +1,13 @@
+/* fit-content natahuje menu v mobile na celu dlzku tabulky (ak ide tabulka "za" pravy okraj mobilu),
+   min-width: 100% zase v desktope centruje obsah (fit-content posuva obsah co najviac dolava a cez min-width: 100% to treba kompenzovat,
+   riesenie pokus/omyl, lepsie sme narychlo nenasli */
+body {
+  width: fit-content;
+  min-width: 100%;
+}
+
 .App {
-  text-align: center;
+  /* text-align: center; - centruje polozky v AutoComplete, co nechceme */
   /* skopirovane z App-header */
   background-color: #282c34;
   color: white;
@@ -14,7 +22,7 @@
   align-items: center;
   /*justify-content: center; chceme mat formular hned pod menu */
   /*font-size: calc(10px + 2vmin);*/
-  font-size: 18px; /* nechceme velke label-y */
+  font-size: 1.29rem; /* nechceme velke label-y */
 }
 
 .App-logo {
@@ -36,7 +44,7 @@
   align-items: center;
   justify-content: center;
   /*font-size: calc(10px + 2vmin);*/
-  font-size: 18px; /* nechceme velke label-y */
+  font-size: 1.29rem; /* nechceme velke label-y */
   color: white;
 }
 
@@ -60,29 +68,37 @@
 /* TODO - do lib-ky presunut */
 /* zvecsenie prazdnej (null) polozky v dropdown-och */
 .p-dropdown-label {
-  min-height: 30px;
+  min-height: 2.14rem;
 }
 
 .p-dropdown-item {
-  min-height: 33px;
+  min-height: 2.36rem;
+}
+
+/* trosku zuzeny button v dropdown-e - povodne bol 2.357rem */
+.p-dropdown .p-dropdown-trigger {
+  width: 2rem;
 }
 
 .p-calendar .x-input-date {
-  width: 85px;
+  width: 6rem;
 }
 
 .p-calendar .x-input-datetime {
-  width: 145px;
+  width: 10rem;
 }
 
 /* this css centers buttons in search dialog (XSearchButton, XSearchButtonDT) */
+/* zrealizujeme cez flex
 .x-lazy-datatable {
   text-align: center;
 }
+*/
 
 /* no line break in table headers (every row has only one line) */
-.p-datatable tr > th {
+.p-datatable tr > th:not(.p-filter-column) {
   white-space: nowrap;
+  overflow: hidden;
 }
 
 /* no line break in tables (every row has only one line) - shoud be used with resizable columns */
@@ -102,30 +118,96 @@
 /* editable datatable - padding shrinked from 7px to 3px (to save space) */
 .p-datatable.p-datatable-sm.x-form-datatable .p-datatable-thead > tr > th.p-filter-column,
 .p-datatable.p-datatable-sm.x-form-datatable .p-datatable-tbody > tr > td {
-  padding: 3px;
+  padding: 0.21rem;
 }
 
 /* normal datatable - padding shrinked from 7px to 3px (to save space) only in header */
 .p-datatable.p-datatable-sm .p-datatable-thead > tr > th.p-filter-column {
-  padding: 3px;
+  padding: 0.21rem;
 }
 
 /* default is 100%, min-content preserves the widths of the columns (width of the datatable is sum of all columns) */
+/* bolo to tu koli tomu aby tabulka nebola roztiahnuta na celu sirku stranky
+    - min-content nastavil sirky stlpcov presne na sirku urcenu cez headerStyle na stlpci
+    - auto este navyse trosku zvecsilo stlpce ak boli dlhe labely
+    - problem - ak sme chceli scrolbar-y, tak nefungovalo zarovnanie stlpcov s header-ami
+    - riesenie - min-content sa teraz priamo zadava na komponente tabulky (XLazyDataTable.DataTable)
+ */
+/*
 .p-datatable table {
-  /*width: min-content;*/
+  /*width: min-content;/
   width: auto;
 }
+*/
 
 .x-field-treetable table {
-  width: 350px;
+  width: 25rem;
 }
 
 /* small button with icon (component XButtonIconSmall) */
 .p-button.x-button-icon-small {
   width: auto;
-  padding: 3px;
-  margin: 1px;
+  padding: 0.21rem;
+  margin: 0.07rem;
 }
 .p-button.x-button-icon-small > .p-button-label {
-  height: 0px;
+  height: 0rem;
+}
+
+/* search button (XSearchButton and XSearchButtonDT) */
+.x-search-button-base {
+  display: flex;
+}
+
+/* width: 100%; - koli search button in datatable (XSearchButtonDT) - bez tohto flex prilis natahoval button (search button vyliezal z bunky, ak mal stlpec nastavenu custom sirku) */
+.x-search-button-base > .p-inputtext {
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+.x-search-button-base > .p-button {
+  flex: 0 1 auto;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+
+/* split button only dropdown (in component XAutoCompleteBase) */
+.x-splitbutton-only-dropdown > .p-splitbutton-defaultbutton {
+  display: none;
+}
+
+.x-splitbutton-only-dropdown > .p-splitbutton-menubutton {
+  width: auto;
+  padding-left: 0.21rem;
+  padding-right: 0.21rem;
+}
+
+.x-splitbutton-only-dropdown-menu {
+  width: auto;
+}
+
+.x-splitbutton-only-dropdown-menu .p-menuitem-link {
+  padding: 0.35rem;
+}
+
+.x-splitbutton-only-dropdown-menu .p-menuitem-link .p-menuitem-icon {
+  margin-right: 0rem;
+}
+
+/* split button only dropdown (in component XAutoCompleteBase) - mobile version*/
+.x-splitbutton-only-dropdown-mobile > .p-splitbutton-defaultbutton {
+  display: none;
+}
+
+.x-splitbutton-only-dropdown-menu-mobile {
+  width: auto;
+}
+
+.x-splitbutton-only-dropdown-menu-mobile .p-menuitem-link {
+  padding: 0rem;
+}
+
+.x-splitbutton-only-dropdown-menu-mobile .p-menuitem-link .p-menuitem-icon {
+  margin: 0.7rem;
 }
