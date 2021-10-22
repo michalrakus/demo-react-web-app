@@ -1,10 +1,14 @@
+html {
+  overflow-y: scroll; /* vertikalny scrollbar vzdy zobrazeny (aj ked neaktivny) - ked nemame scrollbar, tak panely v dropdown-och su posunute kusok dolava */
+}
+
 /* fit-content natahuje menu v mobile na celu dlzku tabulky (ak ide tabulka "za" pravy okraj mobilu),
    min-width: 100% zase v desktope centruje obsah (fit-content posuva obsah co najviac dolava a cez min-width: 100% to treba kompenzovat,
    riesenie pokus/omyl, lepsie sme narychlo nenasli */
 body {
   width: fit-content;
   min-width: 100%;
-  margin: 0; /* prebijeme povodny margin 3.57rem */
+  margin: 0; /* prebijeme povodny margin 3.57rem (niekedy rusi vertikalny scrollbar) */
 }
 
 .App {
