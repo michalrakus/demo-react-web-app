@@ -4,6 +4,7 @@
 body {
   width: fit-content;
   min-width: 100%;
+  margin: 0; /* prebijeme povodny margin 3.57rem */
 }
 
 .App {
@@ -17,9 +18,9 @@ body {
 .App-form {
   /* skopirovane z App-header */
   /*min-height: 100vh;*/
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  /*display: flex;
+  flex-direction: column; - netreba nam flex, ak necentrujeme */
+  /*align-items: center; - stlaca dvojicky label + input */
   /*justify-content: center; chceme mat formular hned pod menu */
   /*font-size: calc(10px + 2vmin);*/
   font-size: 1.29rem; /* nechceme velke label-y */
@@ -36,6 +37,7 @@ body {
   }
 }
 
+/* tento App-header som nikde nenasiel */
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -95,23 +97,34 @@ body {
 }
 */
 
-/* no line break in table headers (every row has only one line) */
-.p-datatable tr > th:not(.p-filter-column) {
+/* no line break in table headers (every row has only one line) and in table cells
+   kedze mame resizable columns (pridavaju overflow: hidden), resizovanim si vie uzer pozriet aj useknuty obsah bunky - moze to vsak byt problem na mobile */
+.p-datatable.x-lazy-datatable tr > th, .p-datatable.x-form-datatable tr > th,
+.p-datatable.x-lazy-datatable tr > td {
   white-space: nowrap;
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 
-/* no line break in tables (every row has only one line) - shoud be used with resizable columns */
-/* "overflow: hidden" znefunkcni dropdown-y v editovatelnej tabulke a pre textove stlpce sa to momentalne neuplatnuje lebo stlpce sa rozsiria ked maju velky obsah
-   "white-space: nowrap;" nema moc velky vyznam ak nemame "overflow: hidden"
-.p-datatable tr > td {
+/* v mobile zbytocne rozdeluje paginator na 2 riadky, zamedzime tomu */
+.p-datatable .p-paginator {
+  flex-wrap: nowrap;
+}
+.p-datatable .p-paginator-pages {
   white-space: nowrap;
-  overflow: hidden;
+}
+
+/* resizable tabulka nastavuje vsetkym bunkam (header, body, footer) overflow: hidden; co je problem pre bunku s filtrom, ktora moze obsahovat dropdown a ten je potom useknuty;
+   preto hidden v tomto pripade prebijeme
+   poznamka: toto netreba, riesi to appendTo={document.body} v Dropdown-e */
+/*
+.p-datatable-resizable .p-datatable-thead > tr > th.p-filter-column {
+  overflow: visible;
 }
 */
 
+
 /* inputs in editable datatable should be as wide as the column, second selector is for inputnumber (inputnumber has span wrapper) */
-.x-form-datatable tr > td .x-input-to-resize, .p-datatable tr > td .x-input-to-resize > .p-inputnumber-input {
+.x-form-datatable tr > td .x-input-to-resize, .x-form-datatable tr > td .x-input-to-resize > .p-inputnumber-input {
   width: 100%;
 }
 
@@ -210,4 +223,26 @@ body {
 
 .x-splitbutton-only-dropdown-menu-mobile .p-menuitem-link .p-menuitem-icon {
   margin: 0.7rem;
+}
+
+/* checkbox vo formulari (vytvoreny cez XCheckbox) - vertikalne centrovanie (cez flexbox) */
+.field.grid > .p-checkbox {
+  align-self: center;
+}
+
+/* .x-form je urceny pre root div element formulara, ale zatial sa nepouziva (stlaca elementy x-form-col ak je ich viac) */
+.x-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.x-form-row {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.x-form-col {
+  margin: 0.7rem; /* inputy maju margin-left: -0.5rem, margin-right: -0.5rem, tento margin sluzi (aj) na kompenzaciu tych minusovych marginov */
 }

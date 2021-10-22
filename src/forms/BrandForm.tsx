@@ -14,8 +14,12 @@ export class BrandForm extends XFormBase {
     render() {
         return (
             <div>
-                <XInputDecimal form={this} field="idBrand" label="ID" readOnly={true}/>
-                <XInputText form={this} field="brand"/>
+                <div className="x-form-row">
+                    <div className="x-form-col">
+                        <XInputDecimal form={this} field="idBrand" label="ID" readOnly={true}/>
+                        <XInputText form={this} field="brand"/>
+                    </div>
+                </div>
                 <XFormFooter form={this}/>
                 <SourceCodeLinkForm sourceCodeFile="BrandForm.tsx"/>
                 <SourceCodeLinkEntity sourceCodeFile="brand.entity.ts"/>

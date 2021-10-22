@@ -52,21 +52,23 @@ export class CarForm extends XFormBase {
     render() {
         return (
             <div>
-                <div className="grid m-3">
-                    <div className="col">
+                <div className="x-form-row">
+                    <div className="x-form-col">
                         <XInputDecimal form={this} field="idCar" label="ID" readOnly={true}/>
                         <XInputText form={this} field="vin" label="Vin"/>
                         <XInputText form={this} field="brand" label="Brand string"/>
-                        <XInputDecimal form={this} field="year" label="Year"/>
-                    </div>
-                    <div className="col">
-                        <XInputText form={this} field="color" label="Color"/>
-                        <XInputDecimal form={this} field="price" label="Price"/>
-                        <XInputDate form={this} field="carDate" label="Car date"/>
-                        <XInputDate form={this} field="carDatetime" label="Car datetime"/>
                         <XCheckbox form={this} field="carBoolean" label="Car boolean"/>
                     </div>
-                    <div className="col">
+                    <div className="x-form-col">
+                        <XInputText form={this} field="color" label="Color"/>
+                        <div className="x-form-row">
+                            <XInputDecimal form={this} field="year" label="Year"/>
+                            <XInputDecimal form={this} field="price" label="Price" inline={true}/>
+                        </div>
+                        <XInputDate form={this} field="carDate" label="Car date"/>
+                        <XInputDate form={this} field="carDatetime" label="Car datetime"/>
+                    </div>
+                    <div className="x-form-col">
                         <XInputDecimal form={this} field="brandAssoc.idBrand" label="ID Brand"/>
                         <XDropdown form={this} assocField="brandAssoc" displayField="brand" label="Brand assoc D"/>
                         <XSearchButton form={this} assocField="brandAssoc" displayField="brand" searchTable={<BrandSearchTable paramExample="param example"/>} assocForm={<BrandForm/>} label="Brand assoc SB" size={16}/>
@@ -74,19 +76,21 @@ export class CarForm extends XFormBase {
                         <XToOneAssocButton form={this} assocField="brandAssoc" assocForm={<BrandForm/>} label="Brand assoc AB"/>
                     </div>
                 </div>
-                <XFormDataTable2 form={this} assocField="driveList" label="Drive list">
-                    <XFormColumn field="idDrive" header="ID" readOnly={true} width="4rem"/>
-                    <XFormColumn field="cityFrom" header="From"/>
-                    <XFormColumn field="cityTo" header="To"/>
-                    <XFormColumn field="km"/>
-                    <XFormColumn field="fuelPrice" header="Fuel - price"/>
-                    <XFormColumn field="driveDate" header="Drive Date"/>
-                    <XFormColumn field="driveDatetime" header="Drive Datetime"/>
-                    <XFormColumn field="driveBoolean" header="Boolean"/>
-                    <XFormColumn field="country.idCountry" header="ID country"/>
-                    <XFormDropdownColumn assocField="country" displayField="code" header="Country Drop" dropdownInFilter={true}/>
-                    <XFormSearchButtonColumn assocField="country" displayField="name" searchTable={<CountrySearchTable/>} header="Country SB" width="12rem"/>
-                </XFormDataTable2>
+                <div style={{maxWidth: 'calc(100vw - 1rem)'}}>
+                    <XFormDataTable2 form={this} assocField="driveList" label="Drive list" /*scrollWidth={'50rem'} scrollHeight={'20rem'}*/>
+                        <XFormColumn field="idDrive" header="ID" readOnly={true} width="4rem"/>
+                        <XFormColumn field="cityFrom" header="From" width={'10rem md:default'}/>
+                        <XFormColumn field="cityTo" header="To" width={'10rem md:default'}/>
+                        <XFormColumn field="km"/>
+                        <XFormColumn field="fuelPrice" header="Fuel - price"/>
+                        <XFormColumn field="driveDate" header="Drive Date"/>
+                        <XFormColumn field="driveDatetime" header="Drive Datetime"/>
+                        <XFormColumn field="driveBoolean" header="Boolean"/>
+                        <XFormColumn field="country.idCountry" header="ID country"/>
+                        <XFormDropdownColumn assocField="country" displayField="code" header="Country Drop" dropdownInFilter={true}/>
+                        <XFormSearchButtonColumn assocField="country" displayField="name" searchTable={<CountrySearchTable/>} header="Country SB" width="12rem"/>
+                    </XFormDataTable2>
+                </div>
                 <XFormFooter form={this}/>
                 <SourceCodeLinkForm sourceCodeFile="CarForm.tsx"/>
                 <SourceCodeLinkEntity sourceCodeFile="car.entity.ts"/>

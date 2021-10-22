@@ -21,6 +21,22 @@ import './App.css'; // bol povodne ako prve css
 const xServerUrl = 'https://x-demo-server.herokuapp.com/';
 XUtils.setXServerUrl(xServerUrl);
 
+// window.screen.addEventListener("orientationchange", function () {
+//     console.log("The orientation of the screen is: " + window.screen.orientation);
+// });
+
+/*
+const ratio = window.devicePixelRatio || 1;
+const w = window.screen.width * ratio;
+const h = window.screen.height * ratio;
+console.log('***************** fachci');
+console.log(window.devicePixelRatio);
+console.log(w);
+console.log(h);
+*/
+
+//console.log(window.getComputedStyle(document.documentElement).fontSize);
+
 // TODO - v buducnosti presunut do XReactWebLib
 function App() {
 
