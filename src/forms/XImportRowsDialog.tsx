@@ -83,7 +83,9 @@ export const XImportRowsDialog = (props: {dialogOpened: boolean; importServicePa
                 <label htmlFor="decimalFormat" className="col-fixed" style={{width:'9.3rem'}}>Decimal format</label>
                 <Dropdown value={decimalFormat} options={XUtils.decimalFormatOptions} onChange={(e: any) => setDecimalFormat(e.value)}/>
             </div>
-            <XButton label="Import" onClick={onImport}/>
+            <div className="flex justify-content-center">
+                <XButton label="Import" onClick={onImport}/>
+            </div>
         </Dialog>
     );
 }

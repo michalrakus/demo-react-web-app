@@ -76,7 +76,7 @@ export class CarForm extends XFormBase {
                         <XToOneAssocButton form={this} assocField="brandAssoc" assocForm={<BrandForm/>} label="Brand assoc AB"/>
                     </div>
                 </div>
-                <div style={{maxWidth: 'calc(100vw - 1rem)'}}>
+                <div className="x-viewport-width">
                     <XFormDataTable2 form={this} assocField="driveList" label="Drive list" /*scrollWidth={'50rem'} scrollHeight={'20rem'}*/>
                         <XFormColumn field="idDrive" header="ID" readOnly={true} width="4rem"/>
                         <XFormColumn field="cityFrom" header="From" width={'10rem md:default'}/>

@@ -9,18 +9,22 @@ body {
   width: fit-content;
   min-width: 100%;
   margin: 0; /* prebijeme povodny margin 3.57rem (niekedy rusi vertikalny scrollbar) */
+  overflow-x: hidden; /* ak mame tabulku sirsiu ako je sirka stranky (caste na mobile), tak sa zapina horizontalny scrollbar na tabulke
+  - ten ale (v Chrome, v Mozille nie) sposobuje ze napravo od tabulky vznika prazdny priestor (t.j. je mozne sa odscrollovat doprava kde nic nevidno),
+  je mozne ze je to bug v Chrome, overflow-x: hidden sposobuje, ze sa neda scrollovat doprava na prazdny priestor,
+  problem moze byt ak budeme mat nejaky element/control sirsi ako je sirka mobilu - asi ho usekne; - nie je to problem, body bude mat vtedy velku sirku (a mobil zobrazi scrollbar) */
 }
 
 .App {
   /* text-align: center; - centruje polozky v AutoComplete, co nechceme */
-  /* skopirovane z App-header */
+  /* skopirovane z App-header - to prislo cez npx create-react-app <app-name> */
   background-color: #282c34;
   color: white;
 }
 
 /* formular (nachadza sa pod XMenu) - centruje sa horizontalne, menu je natiahnute na celu obrazovku */
 .App-form {
-  /* skopirovane z App-header */
+  /* skopirovane z App-header - to prislo cez npx create-react-app <app-name> */
   /*min-height: 100vh;*/
   /*display: flex;
   flex-direction: column; - netreba nam flex, ak necentrujeme */
@@ -28,43 +32,6 @@ body {
   /*justify-content: center; chceme mat formular hned pod menu */
   /*font-size: calc(10px + 2vmin);*/
   font-size: 1.29rem; /* nechceme velke label-y */
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-/* tento App-header som nikde nenasiel */
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  /*font-size: calc(10px + 2vmin);*/
-  font-size: 1.29rem; /* nechceme velke label-y */
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 .source-code-link {
@@ -138,9 +105,15 @@ body {
   padding: 0.21rem;
 }
 
-/* normal datatable - padding shrinked from 7px to 3px (to save space) only in header */
-.p-datatable.p-datatable-sm .p-datatable-thead > tr > th.p-filter-column {
+/* lazy datatable - padding shrinked from 7px to 3px (to save space) only in header */
+.p-datatable.p-datatable-sm.x-lazy-datatable .p-datatable-thead > tr > th.p-filter-column {
   padding: 0.21rem;
+}
+
+/* lazy datatable - body - not shrinked
+   (selector for .x-form-datatable with padding: 0.21rem targets lazy table opened from XSearchButtonDT, that's why we need this selector ) */
+.p-datatable.p-datatable-sm.x-lazy-datatable .p-datatable-tbody > tr > td {
+  padding: 0.5rem;
 }
 
 /* default is 100%, min-content preserves the widths of the columns (width of the datatable is sum of all columns) */
@@ -249,4 +222,20 @@ body {
 
 .x-form-col {
   margin: 0.7rem; /* inputy maju margin-left: -0.5rem, margin-right: -0.5rem, tento margin sluzi (aj) na kompenzaciu tych minusovych marginov */
+}
+
+/* pouziva sa napr. pri tabulkach - obmedzi sirku tabulky na sirku viewport-u (okna) */
+.x-viewport-width {
+  max-width: calc(100vw - 1rem);
+}
+
+/* max vysku dialogu na mobile zvysime z 90% (desktop) na 98% */
+@media (max-width: 786px) {
+  .p-dialog {
+    max-height: 98%;
+  }
+
+  .p-dialog .p-dialog-content {
+    padding-bottom: 0.5rem; /* trosku zuzime padding na spodku */
+  }
 }

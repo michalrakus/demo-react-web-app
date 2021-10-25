@@ -76,7 +76,7 @@ export const XMenu = (props: {defaultFormElement?: any; setXToken: (xToken: XTok
 
     return (
         <div>
-            <Menubar model={items} end={end} className="mb-1"/>
+            <Menubar id="menuId" model={items} end={end} className="mb-1"/>
             {holderWithNavigator}
         </div>
     );

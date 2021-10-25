@@ -12,6 +12,17 @@ export const CarBrowse = (props: {}) => {
 
         // openForm pridavame automaticky v XFormNavigator3 pri renderovani komponentu
         (props as any).openForm(<CarForm object={{driveList: []}}/>);
+        //document.documentElement.scrollTop = 0;
+        // setTimeout(function() {
+        //     window.scrollTo(0,0);
+        // }, 100);
+        //window.scrollTo(0,1);
+
+        // console.log("idem scrollovat");
+        // const menuElem = document.getElementById("menuId")
+        // if (menuElem !== null) {
+        //     menuElem.scrollIntoView();
+        // }
     }
 
     const onEdit = (selectedRow: any) => {
@@ -32,7 +43,7 @@ export const CarBrowse = (props: {}) => {
 
     return (
         <div>
-            <XLazyDataTable entity="Car" rows={30} formFooterHeight={'4.43rem'} /*scrollWidth={'calc(100vw - 20rem)'}*/ /*scrollHeight={'calc(100vh - 30rem)'}*/
+            <XLazyDataTable entity="Car" rows={30} formFooterHeight={'4.43rem'} /*scrollWidth={'80rem'} scrollHeight={'25rem'}*/
                             onAddRow={onAddRow} onEdit={onEdit} removeRow={false} displayed={(props as any).displayed}>
                 <XLazyColumn field="idCar" header="ID"/>
                 <XLazyColumn field="vin" header="Vin"/>
