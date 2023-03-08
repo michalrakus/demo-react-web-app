@@ -3,7 +3,6 @@ import {Menubar} from "primereact/menubar";
 import {CarBrowse} from "./forms/CarBrowse";
 import {XFormNavigator3} from "@michalrakus/x-react-web-lib/XFormNavigator3";
 import {BrandBrowse} from "./forms/BrandBrowse";
-import {XToken} from "@michalrakus/x-react-web-lib/XToken";
 import {XUtils} from "@michalrakus/x-react-web-lib/XUtils";
 import {XUserBrowse} from "@michalrakus/x-react-web-lib/XUserBrowse";
 import {XBrowse} from "@michalrakus/x-react-web-lib/XBrowse";
@@ -11,9 +10,11 @@ import {XBrowseMetaBrowse} from "@michalrakus/x-react-web-lib/XBrowseMetaBrowse"
 import {XHolder1, XHolder2} from "@michalrakus/x-react-web-lib/XHolders";
 import {CarBrowseImport} from "./forms/CarBrowseImport";
 import {XChangePasswordForm} from "@michalrakus/x-react-web-lib/XChangePasswordForm";
+import { User } from "@auth0/auth0-react";
+import {TestovaciForm} from "./forms/TestovaciForm";
 
 // TODO - v buducnosti presunut do XReactWebLib
-export const XMenu = (props: {defaultFormElement?: any; setXToken: (xToken: XToken | null) => void;}) => {
+export const XMenu = (props: {defaultFormElement?: any; logout: () => void; user?: User | undefined}) => {
 
     const [rootFormElement, setRootFormElement] = useState<any>(props.defaultFormElement);
     const [renderHolder1, setRenderHolder1] = useState<boolean>(true);
@@ -23,10 +24,10 @@ export const XMenu = (props: {defaultFormElement?: any; setXToken: (xToken: XTok
             label:'Application',
             items:[
                 {label:'Brand', command: () => {openForm(<BrandBrowse/>);}},
-                {label:'Car', command: () => {openForm(<CarBrowse/>);}}
+                {label:'Car', command: () => {openForm(<CarBrowse/>);}},
                 //{label:'Car - import', command: () => {openForm(<CarBrowseImport/>);}}
                 //{label:'Prazdne', command: () => {openForm(null);}},
-                //{label:'Testovaci', command: () => {openForm(<TestovaciForm/>);}}
+                {label:'Testovaci', command: () => {openForm(<TestovaciForm/>);}}
             ]
         },
         {
@@ -40,14 +41,14 @@ export const XMenu = (props: {defaultFormElement?: any; setXToken: (xToken: XTok
             label:'Administration',
             items:[
                 {label:'Users', command: () => {openForm(<XUserBrowse/>);}},
-                {label:'Browses', command: () => {openForm(<XBrowseMetaBrowse/>);}},
-                {label:'Change password', command: () => {openForm(<XChangePasswordForm setXToken={props.setXToken}/>);}}
+                {label:'Browses', command: () => {openForm(<XBrowseMetaBrowse/>);}}
+                //{label:'Change password', command: () => {openForm(<XChangePasswordForm setXToken={props.setXToken}/>);}}
             ]
         },
         {
             label:'Log off',
             icon:'pi pi-fw pi-power-off',
-            command: () => {props.setXToken(null);}
+            command: props.logout
         }
     ];
 
@@ -61,7 +62,7 @@ export const XMenu = (props: {defaultFormElement?: any; setXToken: (xToken: XTok
 
     const end: any = (
         <div className="grid">
-            <div className="mx-2">Server: {XUtils.xServerUrl}</div><div className="mx-2">  User: {XUtils.getUsername()}</div>
+            <div className="mx-2">Backend: {XUtils.getXBackendUrl()}</div><div className="mx-2">  User: {/*XUtils.getUsername()*/props.user?.name}</div>
         </div>
     );
 

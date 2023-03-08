@@ -15,12 +15,6 @@ import 'primeflex/primeflex.css';
 
 import './App.css'; // bol povodne ako prve css
 
-// provizorne takto, musi byt nastavene pred prvym requestom na server
-// neda sa pouzit parameter sposobom process.env.X_SERVER_URL, lebo aplikacia bezi vo webbrowseri
-//const xServerUrl = 'http://localhost:8081/';
-const xServerUrl = 'https://x-demo-server.herokuapp.com/';
-XUtils.setXServerUrl(xServerUrl);
-
 // window.screen.addEventListener("orientationchange", function () {
 //     console.log("The orientation of the screen is: " + window.screen.orientation);
 // });
@@ -38,7 +32,7 @@ console.log(h);
 //console.log(window.getComputedStyle(document.documentElement).fontSize);
 
 // TODO - v buducnosti presunut do XReactWebLib
-function App() {
+function AppLocal() {
 
     const [xToken, setXToken] = useXToken();
 
@@ -66,7 +60,7 @@ function App() {
             fetchAndSetXMetadata();
         }
         else {
-            elem = <XMenu defaultFormElement={<CarBrowse/>} setXToken={setXToken}/>;
+            elem = <XMenu defaultFormElement={<CarBrowse/>} logout={() => {setXToken(null);}}/>;
         }
     }
 
@@ -77,4 +71,4 @@ function App() {
     );
 }
 
-export default App;
+export default AppLocal;
