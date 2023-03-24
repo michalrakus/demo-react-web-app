@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import * as ReactDOMClient from 'react-dom/client';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import {Auth0Provider} from "@auth0/auth0-react";
@@ -31,13 +31,21 @@ if (XUtils.getEnvVarValue(XEnvVar.REACT_APP_AUTH) === XReactAppAuth.AUTH0) {
         <Auth0Provider
             domain={XUtils.getEnvVarValue(XEnvVar.REACT_APP_AUTH0_DOMAIN)}
             clientId={XUtils.getEnvVarValue(XEnvVar.REACT_APP_AUTH0_CLIENT_ID)}
-            redirectUri={window.location.origin}
-            audience={XUtils.getEnvVarValue(XEnvVar.REACT_APP_AUTH0_AUDIENCE)}>
+            authorizationParams={{redirect_uri: window.location.origin, audience: XUtils.getEnvVarValue(XEnvVar.REACT_APP_AUTH0_AUDIENCE)}}>
             <AppAuth0/>
         </Auth0Provider>;
 }
 
-ReactDOM.render(rootElem, document.getElementById("root"));
+const container = document.getElementById("root");
+if (container !== null) {
+    const root = ReactDOMClient.createRoot(container);
+    root.render(rootElem);
+}
+else {
+    console.log('element with id="root" not found');
+}
+
+//ReactDOM.render(rootElem, document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

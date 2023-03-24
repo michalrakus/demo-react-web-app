@@ -6,7 +6,6 @@ import {XMenu} from "./XMenu";
 import {XUtilsMetadata} from "@michalrakus/x-react-web-lib/XUtilsMetadata";
 import {XLoginForm} from "@michalrakus/x-react-web-lib/XLoginForm";
 import useXToken from "@michalrakus/x-react-web-lib/lib/components/useXToken";
-import {XUtils} from "@michalrakus/x-react-web-lib/XUtils";
 
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';

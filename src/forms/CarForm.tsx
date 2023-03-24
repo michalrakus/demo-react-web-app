@@ -1,6 +1,6 @@
 import React from "react";
 import {XInputText} from "@michalrakus/x-react-web-lib/XInputText";
-import {FormProps, XFormBase} from "@michalrakus/x-react-web-lib/XFormBase";
+import {XFormBase} from "@michalrakus/x-react-web-lib/XFormBase";
 import {XDropdown} from "@michalrakus/x-react-web-lib/XDropdown";
 import {XSearchButton} from "@michalrakus/x-react-web-lib/XSearchButton";
 import {BrandSearchTable} from "./BrandSearchTable";
@@ -24,27 +24,29 @@ import {XObject} from "@michalrakus/x-react-web-lib/lib/components/XObject";
 import {XErrors} from "@michalrakus/x-react-web-lib/XErrors";
 import {XAutoComplete} from "@michalrakus/x-react-web-lib/XAutoComplete";
 import {XFormFooter} from "@michalrakus/x-react-web-lib/XFormFooter";
+import {XInputTextarea} from "@michalrakus/x-react-web-lib/XInputTextarea";
 
 @Form("Car")
 export class CarForm extends XFormBase {
 
-    constructor(props: FormProps) {
+    // props by mal byt typu FormProps ale koli bugu v novej verzii typescript-u sme ho zmenili na any
+    constructor(props: any) {
         super(props);
 
-        this.onClickAddRow = this.onClickAddRow.bind(this);
+        //this.onClickAddRow = this.onClickAddRow.bind(this);
     }
 
     // nepouziva sa
-    onClickAddRow() {
-
-        this.onTableAddRow("driveList", {cityFrom: "fachci"}, "idDrive");
-    };
+    // onClickAddRow() {
+    //
+    //     this.onTableAddRow("driveList", {cityFrom: "fachci"}, "idDrive");
+    // };
 
     // overrides method in XFormBase
     validate(object: XObject): XErrors {
         const errors: XErrors = {};
         if (object.vin && object.vin.length < 3) {
-            errors.vin = "Vin length must be at least 3.";
+            errors.vin = "Length must be at least 3.";
         }
         return errors;
     }
@@ -55,13 +57,16 @@ export class CarForm extends XFormBase {
                 <div className="x-form-row">
                     <div className="x-form-col">
                         <XInputDecimal form={this} field="idCar" label="ID" readOnly={true}/>
-                        <XInputText form={this} field="vin" label="Vin"/>
+                        <div className="x-form-inline-row">
+                            <XInputText form={this} field="vin" label="Vin"/>
+                            <XCheckbox form={this} field="carBoolean" label="Car boolean" inline={true}/>
+                        </div>
                         <XInputText form={this} field="brand" label="Brand string"/>
-                        <XCheckbox form={this} field="carBoolean" label="Car boolean"/>
+                        <XInputTextarea form={this} field="comment" label="Comment" rows={4}/>
                     </div>
                     <div className="x-form-col">
                         <XInputText form={this} field="color" label="Color"/>
-                        <div className="x-form-row">
+                        <div className="x-form-inline-row">
                             <XInputDecimal form={this} field="year" label="Year"/>
                             <XInputDecimal form={this} field="price" label="Price" inline={true}/>
                         </div>
@@ -77,8 +82,8 @@ export class CarForm extends XFormBase {
                     </div>
                 </div>
                 <div className="x-viewport-width">
-                    <XFormDataTable2 form={this} assocField="driveList" label="Drive list" /*scrollWidth={'50rem'} scrollHeight={'20rem'}*/>
-                        <XFormColumn field="idDrive" header="ID" readOnly={true} width="4rem"/>
+                    <XFormDataTable2 form={this} assocField="driveList" label="Drive list" /*scrollWidth={'50rem'} scrollHeight={'20rem'}*/ filterDisplay="row">
+                        <XFormColumn field="idDrive" header="ID" readOnly={true} width="5rem"/>
                         <XFormColumn field="cityFrom" header="From" width={'10rem md:default'}/>
                         <XFormColumn field="cityTo" header="To" width={'10rem md:default'}/>
                         <XFormColumn field="km"/>

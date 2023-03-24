@@ -9,9 +9,10 @@ import {XBrowse} from "@michalrakus/x-react-web-lib/XBrowse";
 import {XBrowseMetaBrowse} from "@michalrakus/x-react-web-lib/XBrowseMetaBrowse";
 import {XHolder1, XHolder2} from "@michalrakus/x-react-web-lib/XHolders";
 import {CarBrowseImport} from "./forms/CarBrowseImport";
-import {XChangePasswordForm} from "@michalrakus/x-react-web-lib/XChangePasswordForm";
 import { User } from "@auth0/auth0-react";
 import {TestovaciForm} from "./forms/TestovaciForm";
+import {TestovaciFormTable} from "./forms/TestovaciFormTable";
+import {CarOwnerBrowse} from "./forms/CarOwnerBrowse";
 
 // TODO - v buducnosti presunut do XReactWebLib
 export const XMenu = (props: {defaultFormElement?: any; logout: () => void; user?: User | undefined}) => {
@@ -25,9 +26,11 @@ export const XMenu = (props: {defaultFormElement?: any; logout: () => void; user
             items:[
                 {label:'Brand', command: () => {openForm(<BrandBrowse/>);}},
                 {label:'Car', command: () => {openForm(<CarBrowse/>);}},
-                //{label:'Car - import', command: () => {openForm(<CarBrowseImport/>);}}
+                {label:'Car owner', command: () => {openForm(<CarOwnerBrowse/>);}},
+                {label:'Car - import', command: () => {openForm(<CarBrowseImport/>);}},
                 //{label:'Prazdne', command: () => {openForm(null);}},
-                {label:'Testovaci', command: () => {openForm(<TestovaciForm/>);}}
+                {label:'Testovaci', command: () => {openForm(<TestovaciForm/>);}},
+                {label:'Testovaci 2', command: () => {openForm(<TestovaciFormTable/>);}}
             ]
         },
         {

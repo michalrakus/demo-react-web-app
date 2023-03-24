@@ -7,29 +7,30 @@
     "node": "18.x"
   },
   "dependencies": {
-    "@auth0/auth0-react": "^1.10.1",
-    "@michalrakus/x-react-web-lib": "1.0.0",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "@types/classnames": "^2.2.10",
-    "@types/jest": "^24.9.1",
-    "@types/node": "^12.12.67",
-    "@types/react": "^17.0.5",
-    "@types/react-dom": "^17.0.5",
-    "@types/react-transition-group": "^4.2.4",
-    "axios": "^0.19.0",
-    "classnames": "^2.2.6",
-    "dateformat": "^4.4.1",
+    "@auth0/auth0-react": "^2.0.1",
+    "@michalrakus/x-react-web-lib": "1.1.0",
     "primeflex": "^3.3.0",
     "primeicons": "^6.0.1",
-    "primereact": "6.0.2",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-scripts": "3.4.3",
-    "react-transition-group": "^4.4.1",
-    "swr": "^0.3.9",
-    "typescript": "^3.2.1"
+    "primereact": "~9.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-transition-group": "^4.4.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.3",
+    "@babel/plugin-syntax-flow": "^7.18.6",
+    "@babel/plugin-transform-react-jsx": "^7.21.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@testing-library/dom": "^9.0.1",
+    "@types/jest": "^29.5.0",
+    "@types/node": "^18.15.3",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@types/react-transition-group": "^4.4.5",
+    "react-scripts": "5.0.1",
+    "typescript": "^4.9.5"
   },
   "scripts": {
     "start": "react-scripts --openssl-legacy-provider start",
@@ -37,8 +38,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "linkLib": "pnpm link @michalrakus/x-react-web-lib",
-    "installLib": "pnpm install ../XReactWebLib/michalrakus-x-react-web-lib-1.0.0.tgz -w",
-    "il": "pnpm run installLib"
+    "installLib": "pnpm install ../XReactWebLib/michalrakus-x-react-web-lib-1.1.0.tgz -w",
+    "il": "pnpm run installLib",
+    "preinstall": "npx only-allow pnpm"
   },
   "eslintConfig": {
     "extends": "react-app"

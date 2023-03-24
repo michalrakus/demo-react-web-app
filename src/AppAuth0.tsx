@@ -4,8 +4,6 @@ import React, {useState} from 'react';
 import {CarBrowse} from "./forms/CarBrowse";
 import {XMenu} from "./XMenu";
 import {XUtilsMetadata} from "@michalrakus/x-react-web-lib/XUtilsMetadata";
-import {XLoginForm} from "@michalrakus/x-react-web-lib/XLoginForm";
-import useXToken from "@michalrakus/x-react-web-lib/lib/components/useXToken";
 import {XUtils} from "@michalrakus/x-react-web-lib/XUtils";
 import {useAuth0} from "@auth0/auth0-react";
 
@@ -16,7 +14,6 @@ import 'primeflex/primeflex.css';
 
 import './App.css'; // bol povodne ako prve css
 import {XPostLoginRequest} from "./serverApi/XPostLoginIfc";
-import {XEnvVar} from "@michalrakus/x-react-web-lib/XEnvVars";
 
 // window.screen.addEventListener("orientationchange", function () {
 //     console.log("The orientation of the screen is: " + window.screen.orientation);
@@ -62,7 +59,7 @@ function AppAuth0() {
                 // zrusime nastaveny access token
                 XUtils.setXToken(null);
                 // odhlasime uzivatela
-                logout({ returnTo: window.location.origin });
+                logout({logoutParams: {returnTo: window.location.origin}});
             }
             else {
                 // ak bola ina chyba, aplikacia spadne
@@ -137,7 +134,7 @@ function AppAuth0() {
                 initializeApp();
             }
             else {
-                elem = <XMenu defaultFormElement={<CarBrowse/>} logout={() => logout({ returnTo: window.location.origin })} user={user}/>;
+                elem = <XMenu defaultFormElement={<CarBrowse/>} logout={() => logout({logoutParams: {returnTo: window.location.origin}})} user={user}/>;
             }
         }
     }

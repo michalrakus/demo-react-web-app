@@ -39,6 +39,12 @@ body {
 }
 
 /* TODO - do lib-ky presunut */
+
+/* oprava chybicky (primereact ~9.2.0) - header tabulky prekryval panel menu (obidva elementy mali z-index: 1) */
+.p-menubar .p-submenu-list {
+  z-index: 2;
+}
+
 /* zvecsenie prazdnej (null) polozky v dropdown-och */
 .p-dropdown-label {
   min-height: 2.14rem;
@@ -114,6 +120,22 @@ body {
    (selector for .x-form-datatable with padding: 0.21rem targets lazy table opened from XSearchButtonDT, that's why we need this selector ) */
 .p-datatable.p-datatable-sm.x-lazy-datatable .p-datatable-tbody > tr > td {
   padding: 0.5rem;
+}
+
+/* editable datatable + lazy datatable - center checkbox in filter row */
+.p-datatable.p-datatable-sm.x-form-datatable .p-datatable-thead > tr > th.p-filter-column > div.p-column-filter > div.p-column-filter-element:has(div.p-tristatecheckbox),
+.p-datatable.p-datatable-sm.x-lazy-datatable .p-datatable-thead > tr > th.p-filter-column > div.p-column-filter > div.p-column-filter-element:has(div.p-tristatecheckbox) {
+  text-align: center;
+}
+
+/* filter-row - margin-left 0.5 -> 0 - saving space between filter input and filter-menu-button */
+.p-column-filter-row .p-column-filter-menu-button, .p-column-filter-row .p-column-filter-clear-button {
+  margin-left: 0rem;
+}
+
+/* filter-row - width 2 -> 1.25 - saving space, filter-menu-button is narrower */
+.p-column-filter-row .p-column-filter-menu-button {
+   width: 1.25rem;
 }
 
 /* default is 100%, min-content preserves the widths of the columns (width of the datatable is sum of all columns) */
@@ -207,6 +229,12 @@ body {
   align-self: center;
 }
 
+/* root div pre XInputTextarea, ak nastavime property labelOnTop=true */
+.x-inputtextarea-label-on-top {
+  flex-direction: column;
+  padding-left: 0.5rem; /* ostatne fieldy v stlpci maju margin 0.5rem, tak zarovname aj tento XInputTextarea */
+}
+
 /* .x-form je urceny pre root div element formulara, ale zatial sa nepouziva (stlaca elementy x-form-col ak je ich viac) */
 .x-form {
   display: flex;
@@ -214,9 +242,16 @@ body {
   align-items: center;
 }
 
+/* kedze je flex a defaultne ma nastavene flex-direction: row, tak vsetky svoje child elementy uklada do riadku (do row-u) */
 .x-form-row {
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+/* uklada svoje child elementy do riadku, zarovnava ich dolava (pouziva default justify-content: flex-start) */
+.x-form-inline-row {
+  display: flex;
   flex-wrap: wrap;
 }
 

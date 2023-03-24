@@ -2,10 +2,7 @@ import React, {useState} from "react";
 import {Calendar} from "primereact/calendar";
 import {TriStateCheckbox} from "primereact/tristatecheckbox";
 import {Button} from "primereact/button";
-import {ImportParam, ImportResponse, ImportType} from "@michalrakus/x-react-web-lib/lib/serverApi/ExportImportParam";
 import {XUtils} from "@michalrakus/x-react-web-lib/XUtils";
-//import {TriedaXX} from "@michalrakus/x-pokus-lib/TriedaXX";
-//import {TriedaZZ} from "@michalrakus/x-pokus-lib/TriedaZZ";
 
 export const TestovaciForm = (props: {}) => {
 
